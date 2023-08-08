@@ -24,6 +24,10 @@ var gameMatrix = [3][3]string{
 
 
 
+func (cr* CurrentRound) reset() {
+	*cr = CurrentRound{}
+}
+
 
 func resetGame() {
 	// resetMatrix
@@ -34,7 +38,7 @@ func resetGame() {
 		}
 	}
 
-	currentRound.winner = ""
+	currentRound.reset()
 }
 
 func getUserInput(message string) string {
@@ -155,9 +159,9 @@ func playTurns() {
 }
 
 func checkRowsAndColumnsWin() bool {
-	i := 0
 	isWin := false
 	
+	i := 0
 	for i <= 2 {
 				
 		rowWinCase := gameMatrix[i][0] == gameMatrix[i][1] && gameMatrix[i][1] == gameMatrix[i][2]
